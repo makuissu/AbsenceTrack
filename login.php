@@ -5,6 +5,7 @@ $host = getenv('MYSQLHOST') ?: '127.0.0.1';
 $db = getenv('MYSQLDATABASE') ?: 'absencetrack';
 $user = getenv('MYSQLUSER') ?: 'root';
 $pass = getenv('MYSQLPASSWORD') ?: '';
+$port = getenv('DB_PORT') ?: '3306';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
