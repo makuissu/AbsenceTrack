@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$host = '127.0.0.1';
-$db = 'absencetrack';
-$user = 'root';
-$pass = '';
+$host = getenv('MYSQLHOST') ?: '127.0.0.1';
+$db = getenv('MYSQLDATABASE') ?: 'absencetrack';
+$user = getenv('MYSQLUSER') ?: 'root';
+$pass = getenv('MYSQLPASSWORD') ?: '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
