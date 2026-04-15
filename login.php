@@ -23,7 +23,6 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    var_dump($_POST);
 
     $login = isset($_POST['login']) ? trim($_POST['login']) : '';
     $motDePasse = isset($_POST['motDePasse']) ? $_POST['motDePasse'] : '';
@@ -33,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$login]);
         $user = $stmt->fetch();
         
-        var_dump($user);
+       
 
         if ($user && password_verify($motDePasse, $user['motDePasse'])) {
             // Authentification réussie
@@ -42,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'role' => $user['role']
             ];
 
-            var_dump($_SESSION);
+           
             // die;
 
             if ($user['role'] === 'Admin') {
