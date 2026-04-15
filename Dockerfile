@@ -6,7 +6,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN chmod +x start.sh
+RUN chmod +x start.sh setup-db.sh
+
+# Import database on first run
+RUN bash setup-db.sh || true
 
 EXPOSE 8080
 
