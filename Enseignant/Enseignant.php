@@ -6,10 +6,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'Enseignant') {
     // exit;
 }
 // Connexion à la base de données
-$host = '127.0.0.1';
-$db = 'absencetrack';
-$user = 'root';
-$pass = '';
+$host = getenv('MYSQLHOST') ?: 'mysql.railway.internal';
+$db = getenv('MYSQLDATABASE') ?: 'absencetrack';
+$user = getenv('MYSQLUSER') ?: 'root';
+$pass = getenv('MYSQLPASSWORD') ?: '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
