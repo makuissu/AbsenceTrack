@@ -1,17 +1,25 @@
 #!/bin/bash
+echo "DEBUG: MYSQLHOST=$MYSQLHOST"
+echo "DEBUG: MYSQLUSER=$MYSQLUSER"
+echo "DEBUG: MYSQLPASSWORD=$MYSQLPASSWORD"
+
 php -r "
 \$host = getenv('MYSQLHOST');
 \$user = getenv('MYSQLUSER');
 \$pass = getenv('MYSQLPASSWORD');
+
+echo \"PHP: Connecting to host=\$host, user=\$user\n\";
 
 // Wait for MySQL to be ready
 \$attempts = 0;
 while (\$attempts < 30) {
     try {
         \$pdo = new PDO('mysql:host=' . \$host, \$user, \$pass);
+        echo \"Connected!\n\";
         break;
     } catch (PDOException \$e) {
         \$attempts++;
+        echo \"Attempt \$attempts: \" . \$e->getMessage() . \"\n\";
         sleep(1);
     }
 }
