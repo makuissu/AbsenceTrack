@@ -1,10 +1,10 @@
 <?php
 session_start();
-$host = getenv('DB_HOST');
-$db   = getenv('DB_NAME');
-$user = getenv('DB_USER');
-$pass = getenv('DB_PASSWORD');
-$port = getenv('DB_PORT');
+$host = getenv('MYSQLHOST');        // au lieu de DB_HOST
+$db   = getenv('MYSQLDATABASE');    // au lieu de DB_NAME
+$user = getenv('MYSQLUSER');        // au lieu de DB_USER
+$pass = getenv('MYSQLPASSWORD');    // au lieu de DB_PASSWORD
+$port = getenv('MYSQLPORT');        // au lieu de DB_PORT
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
